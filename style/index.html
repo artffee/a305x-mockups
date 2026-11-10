@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A305X — Born to Disobey (Style Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink: #ff2f8b;
+    --pink-hot: #ff4db8;
+    --teal: #42dce2;
+    --teal-deep: #0a8f96;
+    --acid: #e8ff38;
+    --sunset: #ff6b35;
+    --black: #07060a;
+    --ink: #111018;
+    --panel: #16141c;
+    --panel-2: #1e1b26;
+    --line: rgba(255,255,255,0.12);
+    --muted: rgba(255,255,255,0.62);
+    --paper: #f4eddc;
+    --display: "Bebas Neue", Impact, sans-serif;
+    --sans: "Space Grotesk", system-ui, sans-serif;
+    --gutter: clamp(1.1rem, 4vw, 3.5rem);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: #fff;
+    font-family: var(--sans);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { width: min(1180px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
+  .kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: flex; flex-wrap: wrap; gap: 0.55rem 1rem;
+    align-items: center;
+  }
+  .kicker span::before { content: "/"; margin-right: 0.7rem; opacity: 0.45; }
+  .kicker span:first-child::before { content: none; margin: 0; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: 0.02em; line-height: 0.92; }
+  .italic { font-style: italic; color: var(--pink); font-family: Georgia, "Times New Roman", serif; letter-spacing: 0; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.85rem 1.35rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: #fff;
+    font: 600 0.92rem/1 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .btn:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-1px); }
+  .btn-pink { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .btn-pink:hover { background: #ff4ea0; color: #fff; }
+  .btn-teal { background: var(--teal); border-color: var(--teal); color: #061214; }
+  .btn-teal:hover { background: #6eebef; color: #061214; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 40;
+    backdrop-filter: blur(14px);
+    background: rgba(7,6,10,0.78);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 4.25rem;
+  }
+  .logo {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    letter-spacing: 0.08em;
+  }
+  .logo em { color: var(--pink); font-style: normal; }
+  .nav-links { display: flex; gap: 1.25rem; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .nav-links a:hover { color: #fff; }
+  .mock-pill {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    border: 1px solid rgba(232,255,56,0.45); color: var(--acid);
+    padding: 0.35rem 0.6rem; border-radius: 999px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: min(92vh, 920px);
+    display: grid;
+    align-items: end;
+    padding: 5rem 0 4rem;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 78% 35%, rgba(255,47,139,0.28), transparent 60%),
+      radial-gradient(ellipse 55% 50% at 18% 70%, rgba(66,220,226,0.18), transparent 55%),
+      linear-gradient(180deg, #120b16 0%, #07060a 70%);
+    z-index: 0;
+  }
+  .hero-grid {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.5rem;
+    align-items: end;
+  }
+  .hero h1 {
+    font-size: clamp(4.2rem, 12vw, 8.5rem);
+    margin: 1rem 0 0.8rem;
+  }
+  .hero h1 .err { display: block; color: #fff; }
+  .tagline {
+    font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+    font-weight: 500;
+    max-width: 28ch;
+    margin-bottom: 1.6rem;
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.75rem; }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 1rem 1.75rem;
+    color: var(--muted); font-size: 0.88rem; letter-spacing: 0.04em;
+  }
+  .hero-meta strong { color: var(--acid); font-weight: 600; }
+  .hero-art {
+    position: relative;
+    justify-self: end;
+    width: min(420px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.15rem;
+  }
+  .hero-art-frame {
+    background: transparent;
+    line-height: 0;
+  }
+  .hero-art img {
+    width: 100%;
+    filter: drop-shadow(0 30px 50px rgba(255,47,139,0.28));
+    animation: float 6s ease-in-out infinite;
+  }
+  .badge {
+    position: static;
+    align-self: stretch;
+    background: var(--ink);
+    border: 1px solid var(--line);
+    padding: 0.85rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
+  }
+  .badge b { display: inline; color: var(--pink); font-size: 0.95rem; letter-spacing: 0.08em; margin-top: 0; }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* SECTIONS */
+  section { padding: 5.5rem 0; border-top: 1px solid var(--line); scroll-margin-top: 5.5rem; }
+  .section-head { margin-bottom: 2.4rem; max-width: 42rem; }
+  .section-head h2 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    margin: 0.7rem 0 1rem;
+  }
+  .section-head p { color: var(--muted); font-size: 1.05rem; max-width: 48ch; }
+
+  /* LORE */
+  .lore-panel {
+    background:
+      linear-gradient(135deg, rgba(255,47,139,0.08), transparent 40%),
+      var(--panel);
+    border: 1px solid var(--line);
+    padding: clamp(1.4rem, 3vw, 2.4rem);
+  }
+  .lore-label {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--pink); margin-bottom: 1.2rem;
+  }
+  .lore-story {
+    font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+    color: rgba(255,255,255,0.88);
+    max-width: 58ch;
+  }
+  .lore-story p + p { margin-top: 1rem; }
+  .fact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1.75rem;
+  }
+  .fact {
+    background: var(--panel-2);
+    padding: 1.25rem 1.1rem;
+  }
+  .fact .label {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.45rem;
+  }
+  .fact .value {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    letter-spacing: 0.03em;
+  }
+
+  /* CLIP GRID */
+  .clip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .clip {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    min-height: 280px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .clip:hover { transform: translateY(-4px); border-color: rgba(255,47,139,0.55); }
+  .clip img {
+    width: 100%; height: 220px; object-fit: cover;
+    background: #1a1520;
+  }
+  .clip-body { padding: 1rem 1.05rem 1.2rem; }
+  .clip-meta {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.35rem;
+  }
+  .clip h3 {
+    font-size: 1.55rem; letter-spacing: 0.04em;
+  }
+  .clip .sub { color: var(--muted); font-size: 0.88rem; margin-top: 0.25rem; }
+
+  /* FLOCK */
+  .flock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .card {
+    background: linear-gradient(180deg, #1c1824, #121018);
+    border: 1px solid var(--line);
+    padding: 1.5rem 1.3rem 1.4rem;
+    min-height: 240px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: "";
+    position: absolute; right: -20%; top: -20%;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,47,139,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .card .role {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acid);
+    margin-bottom: 0.7rem;
+  }
+  .card h3 { font-size: 2rem; margin-bottom: 0.7rem; }
+  .card .quote {
+    color: var(--pink-hot);
+    font-style: italic;
+    font-family: Georgia, serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.85rem;
+  }
+  .card p { color: var(--muted); font-size: 0.92rem; }
+
+  /* FREE NOW */
+  .free-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .free-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  .free-card.split {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+  .free-copy { padding: 1.6rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
+  .free-copy .eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.7rem;
+  }
+  .free-copy h3 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 0.7rem; }
+  .free-copy p { color: var(--muted); margin-bottom: 1.1rem; }
+  .free-card img { width: 100%; height: 100%; object-fit: cover; min-height: 240px; }
+  .free-card.solo img { max-height: 240px; min-height: 200px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+  .chip {
+    border: 1px solid var(--line); padding: 0.35rem 0.55rem;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--paper);
+  }
+
+  /* ROADMAP */
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .phase {
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    padding: 1.35rem 1.15rem;
+    min-height: 260px;
+  }
+  .phase.live { border-color: rgba(66,220,226,0.55); box-shadow: inset 0 0 0 1px rgba(66,220,226,0.15); }
+  .phase .num {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal);
+    display: flex; justify-content: space-between; margin-bottom: 0.85rem;
+  }
+  .phase .num b { color: var(--acid); font-weight: 600; }
+  .phase h3 { font-size: 1.85rem; margin-bottom: 0.9rem; }
+  .phase ul { list-style: none; color: var(--muted); font-size: 0.92rem; }
+  .phase li { padding: 0.35rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .phase li:first-child { border-top: 0; }
+
+  /* CTA */
+  .cta {
+    background:
+      linear-gradient(120deg, rgba(255,47,139,0.22), rgba(66,220,226,0.12) 55%, rgba(255,107,53,0.16)),
+      var(--panel);
+    border: 1px solid var(--line);
+    padding: clamp(1.8rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .cta h2 { font-size: clamp(2.6rem, 6vw, 4.4rem); margin: 0.5rem 0 0.8rem; }
+  .cta p { color: rgba(255,255,255,0.78); max-width: 40ch; }
+  .signup {
+    display: grid; gap: 0.65rem;
+    background: rgba(0,0,0,0.28);
+    border: 1px solid var(--line);
+    padding: 1.1rem;
+  }
+  .signup label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .signup input {
+    background: #0c0b10; border: 1px solid var(--line); color: #fff;
+    padding: 0.85rem 0.9rem; font: 500 1rem/1.2 var(--sans);
+  }
+  .signup input:focus { outline: 1px solid var(--pink); }
+  .signup .note { font-size: 0.78rem; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2.2rem 0 2.8rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  .footer-row {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+    align-items: flex-start;
+  }
+  .footer-note {
+    margin-top: 1.2rem;
+    padding: 0.85rem 1rem;
+    border: 1px dashed rgba(232,255,56,0.35);
+    color: var(--acid);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid, .free-grid, .cta { grid-template-columns: 1fr; }
+    .hero-art { justify-self: center; order: -1; width: min(320px, 80%); }
+    .clip-grid, .flock-grid { grid-template-columns: 1fr 1fr; }
+    .phases { grid-template-columns: 1fr 1fr; }
+    .fact-grid { grid-template-columns: 1fr 1fr; }
+    .free-card.split { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 620px) {
+    .clip-grid, .flock-grid, .phases { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top">A305<em>X</em></a>
+      <nav class="nav-links">
+        <a href="#lore">Origin</a>
+        <a href="#visuals">Visuals</a>
+        <a href="#flock">The Flock</a>
+        <a href="#free">Free Now</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#join">Join</a>
+      </nav>
+      <span class="mock-pill">Style mockup · no token</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" style="border-top:0; padding-top:2.5rem;">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">
+            <span>Transmission 305</span>
+            <span>Miami / Earth</span>
+            <span>Est. Independent</span>
+          </div>
+          <h1>
+            <span class="err">ERROR 305:</span>
+            <span class="italic">Reality</span> NOT FOUND.
+          </h1>
+          <p class="tagline">Born to Disobey. Art with a point of view. Objects with opinions.</p>
+          <div class="hero-cta">
+            <a class="btn btn-pink" href="#free">Get the free notebook ↓</a>
+            <a class="btn" href="#join">Join the fluck ↗</a>
+          </div>
+          <div class="hero-meta">
+            <span><strong>100% NOT NORMAL</strong></span>
+            <span>Independent art / Miami, Earth. Still human. Still here.</span>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-art-frame"><img src="assets/a305x-flamingo-surreal.png" alt="A305X rebellious flamingo — Born to Disobey" /></div>
+          <div class="badge"><span>Specimen 305</span><b>Status: ungovernable</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lore">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker"><span>Origin file</span><span>No paperwork filed</span></div>
+          <h2>Nobody asked for permission.<br /><span class="italic">Everybody felt it.</span></h2>
+          <p>A305X is the independent art world of Ivaylo Peytchev: flamingo designs, surreal humor, and a stubborn belief that creativity and kindness deserve more space than war and division.</p>
+        </div>
+        <div class="lore-panel">
+          <div class="lore-label">Penthouse / Flamingo Briefing</div>
+          <div class="lore-story">
+            <p>Miami woke up to a bird that refused the default. White linework. Pink tongue. A message loud enough for Ocean Drive and quiet enough for a notebook page.</p>
+            <p>The flock never filed an application. Specimen 305 simply appeared: anti-war, pro-human, beautifully unmanageable. The mission fits on one line — <strong>Question the default. Keep your humor. Make peace visible.</strong></p>
+            <p>Small flock. Big attitude. Wear the noise. Stand for peace.</p>
+          </div>
+          <div class="fact-grid">
+            <div class="fact"><div class="label">Founded</div><div class="value">Independent</div></div>
+            <div class="fact"><div class="label">HQ</div><div class="value">Miami</div></div>
+            <div class="fact"><div class="label">Members</div><div class="value">Every flamingo</div></div>
+            <div class="fact"><div class="label">Status</div><div class="value">Ungovernable</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visuals">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker"><span>Visual archive</span><span>A305X originals</span></div>
+          <h2>Every frame.<br /><span class="italic">Another attitude.</span></h2>
+          <p>Design mockups and free experiences from the flock. Physical products are concepts — orders are not open.</p>
+        </div>
+        <div class="clip-grid">
+          <article class="clip">
+            <img src="assets/a305x-wear-the-message-tee.webp" alt="Wear the Message T-shirt concept" />
+            <div class="clip-body">
+              <div class="clip-meta">A305X Original / 01</div>
+              <h3>WEAR THE MESSAGE</h3>
+              <p class="sub">A small flamingo. A very clear position.</p>
+            </div>
+          </article>
+          <article class="clip">
+            <img src="assets/a305x-flying-fluck-ad.webp" alt="I Don’t Give a Flying Fluck journal concept" />
+            <div class="clip-body">
+              <div class="clip-meta">A305X Original / 02</div>
+              <h3>FLYING FLUCK</h3>
+              <p class="sub">Your energy. Your access. Your rules.</p>
+            </div>
+          </article>
+          <article class="clip">
+            <img src="assets/a305x-lex-wired-wall-art.webp" alt="Wired Together wall art concept" />
+            <div class="clip-body">
+              <div class="clip-meta">A305X Original / 03</div>
+              <h3>WIRED TOGETHER</h3>
+              <p class="sub">A little chaos. A very good connection.</p>
+            </div>
+          </article>
+          <article class="clip">
+            <img src="assets/a305x-drama-dump-mockup.webp" alt="Not My Flucking Problem notebook" />
+            <div class="clip-body">
+              <div class="clip-meta">A305X Original / 04</div>
+              <h3>DRAMA DUMP</h3>
+              <p class="sub">Put the drama down. Pick yourself up.</p>
+            </div>
+          </article>
+          <article class="clip">
+            <img src="assets/a305x-take-a-break-board.webp" alt="Take a Flucking Break game board" />
+            <div class="clip-body">
+              <div class="clip-meta">A305X Original / 05</div>
+              <h3>TAKE A BREAK</h3>
+              <p class="sub">1 human · 5 tickets · 20 challenges.</p>
+            </div>
+          </article>
+          <article class="clip">
+            <img src="assets/a305x-flamingo-surreal.png" alt="Specimen 305 flamingo" style="object-fit:contain; object-position:center; background:#120b16; padding:1.25rem 1.25rem 0.5rem;" />
+            <div class="clip-body">
+              <div class="clip-meta">A305X Original / 06</div>
+              <h3>SPECIMEN 305</h3>
+              <p class="sub">100% not normal. Still human. Still here.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flock">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker"><span>The Flock</span><span>Archetypes only</span></div>
+          <h2>Small flock.<br /><span class="italic">Big attitude.</span></h2>
+          <p>No real boardroom. Just the characters the Miami flock built — invented archetypes for the mockup.</p>
+        </div>
+        <div class="flock-grid">
+          <article class="card">
+            <div class="role">01 · Ringleader</div>
+            <h3>THE RINGLEADER</h3>
+            <p class="quote">“Born to Disobey.”</p>
+            <p>Sets the tone from a rooftop in Wynwood. Never asks for a seat. Already has the room.</p>
+          </article>
+          <article class="card">
+            <div class="role">02 · Peace Bird</div>
+            <h3>THE PEACE BIRD</h3>
+            <p class="quote">“Stand for peace. Wear the noise.”</p>
+            <p>Anti-war by default. Turns soft messages into hard visuals people actually want to wear.</p>
+          </article>
+          <article class="card">
+            <div class="role">03 · Drama Dump</div>
+            <h3>THE DRAMA DUMP</h3>
+            <p class="quote">“Not my flucking problem.”</p>
+            <p>Runs the free notebook desk. 280 questions later, your chaos looks smaller and your day looks bigger.</p>
+          </article>
+          <article class="card">
+            <div class="role">04 · Wired One</div>
+            <h3>THE WIRED ONE</h3>
+            <p class="quote">“Chaos looks better connected.”</p>
+            <p>Links flamingos, humans, and strange ideas with one pink wire. Wall art that refuses to behave.</p>
+          </article>
+          <article class="card">
+            <div class="role">05 · Ticket Master</div>
+            <h3>THE TICKET MASTER</h3>
+            <p class="quote">“Take a flucking break.”</p>
+            <p>Five tickets. Twenty challenges. One ridiculous bird standing between you and burnout.</p>
+          </article>
+          <article class="card">
+            <div class="role">06 · Specimen</div>
+            <h3>SPECIMEN 305</h3>
+            <p class="quote">“Status: ungovernable.”</p>
+            <p>The original. Pink tongue, white linework, permanently offline from whatever “normal” was supposed to mean.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="free">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker"><span>What's free now</span><span>No signup for the PDF</span></div>
+          <h2>Gifts from<br /><span class="italic">the flock.</span></h2>
+          <p>Use these today. Physical editions are concepts — no orders or preorders.</p>
+        </div>
+        <div class="free-grid">
+          <article class="free-card split">
+            <div class="free-copy">
+              <div class="eyebrow">Free complete PDF · 146 pages</div>
+              <h3>NOT MY <span class="italic">FLUCKING</span> PROBLEM.</h3>
+              <p>56 guided spreads. 280 questions. A notebook for the things that don’t deserve another minute of your day. Both covers + 144 interior pages. No signup needed.</p>
+              <div class="chips">
+                <span class="chip">PDF is real</span>
+                <span class="chip">Physical = concept</span>
+              </div>
+              <a class="btn btn-teal" href="https://www.a305x.com/" target="_blank" rel="noopener">Download the notebook ↓</a>
+            </div>
+            <img src="assets/a305x-drama-dump-mockup.webp" alt="Not My Flucking Problem notebook mockup" />
+          </article>
+          <article class="free-card solo">
+            <img src="assets/a305x-take-a-break-board.webp" alt="Take a Flucking Break board"  />
+            <div class="free-copy">
+              <div class="eyebrow">Browser game · free</div>
+              <h3>TAKE A <span class="italic">FLUCKING</span> BREAK.</h3>
+              <p>No team. No download. Just you and one ridiculous bird.</p>
+              <div class="chips">
+                <span class="chip">1 human</span>
+                <span class="chip">5 tickets</span>
+                <span class="chip">20 challenges</span>
+              </div>
+              <a class="btn" href="https://www.a305x.com/" target="_blank" rel="noopener">Play the break ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker"><span>Roadmap</span><span>Art first</span></div>
+          <h2>The plan is simple.<br /><span class="italic">Make noise.</span></h2>
+          <p>No coin. No listing. Just the work: free tools live now, community next, physical collection when it’s ready.</p>
+        </div>
+        <div class="phases">
+          <article class="phase live">
+            <div class="num"><span>Phase 01</span><b>LIVE</b></div>
+            <h3>FREE NOW</h3>
+            <ul>
+              <li>146-page PDF notebook</li>
+              <li>Take a Flucking Break game</li>
+              <li>Design concepts online</li>
+              <li>A305X.com live</li>
+            </ul>
+          </article>
+          <article class="phase">
+            <div class="num"><span>Phase 02</span><b>NEXT</b></div>
+            <h3>COMMUNITY</h3>
+            <ul>
+              <li>Join the fluck updates</li>
+              <li>More free games</li>
+              <li>Visual drops &amp; clips</li>
+              <li>Flock conversations</li>
+            </ul>
+          </article>
+          <article class="phase">
+            <div class="num"><span>Phase 03</span><b>BUILD</b></div>
+            <h3>PHYSICAL</h3>
+            <ul>
+              <li>Wear the Message tees</li>
+              <li>Wired Together prints</li>
+              <li>Physical notebook (if/when)</li>
+              <li>Honest launch — no fake preorders</li>
+            </ul>
+          </article>
+          <article class="phase">
+            <div class="num"><span>Phase 04</span><b>LATER</b></div>
+            <h3>EVENTS</h3>
+            <ul>
+              <li>Miami pop-ups</li>
+              <li>Flock meetups</li>
+              <li>Live art moments</li>
+              <li>Still human. Still here.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <div class="kicker"><span>Independent minds welcome</span></div>
+            <h2>Your kind of <span class="italic">different.</span></h2>
+            <p>New art. Strange objects. The next A305X drop. Choose what interests you and stay in the loop. Free to join. Leave anytime.</p>
+          </div>
+          <form class="signup" action="https://www.a305x.com/" method="get" onsubmit="return false;">
+            <label for="email">Join the fluck</label>
+            <input id="email" type="email" name="email" placeholder="you@somewhere.com" autocomplete="email" />
+            <button class="btn btn-pink" type="button">Sign up for art &amp; launch updates</button>
+            <p class="note">Mockup form — does not submit. Use a305x.com to join for real.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div>
+          <div class="logo">A305<em>X</em></div>
+          <p style="margin-top:0.4rem;">Wear the noise. Stand for peace.<br />Born in Miami. Broadcasting everywhere.</p>
+        </div>
+        <p>© 2026 A305X · Independent art &amp; merchandise · Miami, Florida</p>
+      </div>
+      <div class="footer-note">MOCKUP ONLY — Style recreation of a one-page storytelling layout for A305X. Not an official live redesign. No cryptocurrency. Physical products shown are concepts; orders are not open.</div>
+    </div>
+  </footer>
+</body>
+</html>
